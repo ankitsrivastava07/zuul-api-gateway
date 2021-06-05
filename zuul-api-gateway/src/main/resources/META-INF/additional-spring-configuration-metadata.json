@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "zuul.debug",
+    "type": "java.lang.String",
+    "description": "A description for 'zuul.debug'"
+  },
+  {
+    "name": "zuul.debugFilters",
+    "type": "java.lang.String",
+    "description": "A description for 'zuul.debugFilters'"
+  }
+]}
