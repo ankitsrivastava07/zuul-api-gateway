@@ -28,10 +28,10 @@ zuul:
   routes:
     login:
         path: /users/*
-        url: http://e-procurement:8081
+        url: https://e-procurement.herokuapp.com/:8081
         stripPrefix: false
         sensitiveHeaders:    
     jwt-session:
       path: /token-session/*
-      url:  http://e-procurement:8082  
+      url:  https://e-procurement.herokuapp.com/:8082  
       stripPrefix: false
