@@ -12,13 +12,19 @@ logging:
         cloud:
           netflix: trace
 
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
 
 zuul:
   debugFilters: true
   host:
     socket-timeout-millis: 120000
+    connection-request-timeout-millis: 120000
   include-debug-header: true
-  sensitiveHeaders:
   routes:
     login:
         path: /users/*
@@ -29,4 +35,3 @@ zuul:
       path: /token-session/*
       url:  http://localhost:8082  
       stripPrefix: false
-      sensitiveHeaders:
