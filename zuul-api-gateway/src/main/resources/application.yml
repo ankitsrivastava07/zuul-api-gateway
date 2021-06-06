@@ -22,8 +22,8 @@ hystrix:
 zuul:
   debugFilters: true
   host:
-    socket-timeout-millis: 120000
-    connection-request-timeout-millis: 120000
+    socket-timeout-millis: 500000
+    connection-request-timeout-millis: 500000
   include-debug-header: true
   routes:
     login:
