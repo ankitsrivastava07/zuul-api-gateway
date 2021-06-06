@@ -28,10 +28,10 @@ zuul:
   routes:
     login:
         path: /users/*
-        url: http://localhost:8081
+        url: http://e-procurement:8081
         stripPrefix: false
         sensitiveHeaders:    
     jwt-session:
       path: /token-session/*
-      url:  http://localhost:8082  
+      url:  http://e-procurement:8082  
       stripPrefix: false
