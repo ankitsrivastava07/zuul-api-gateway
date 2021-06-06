@@ -12,6 +12,11 @@ logging:
         cloud:
           netflix: trace
 
+eureka:
+  client:
+    serviceUrl:
+        defaultZone: http://eureka-server-microservice:8761/eureka/
+        
 hystrix:
   command:
     default:
