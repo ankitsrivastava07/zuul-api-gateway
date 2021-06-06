@@ -16,7 +16,7 @@ logging:
 zuul:
   debugFilters: true
   host:
-    socket-timeout-millis: 60000
+    socket-timeout-millis: 120000
   include-debug-header: true
   sensitiveHeaders:
   routes:
