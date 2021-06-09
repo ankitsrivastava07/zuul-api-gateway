@@ -11,11 +11,6 @@ logging:
       springframework:
         cloud:
           netflix: trace
-
-eureka:
-  client:
-    serviceUrl:
-        defaultZone: http://${HOST_NAME}:8761/eureka/
         
 hystrix:
   command:
@@ -33,10 +28,10 @@ zuul:
   routes:
     login:
         path: /users/*
-        url: http://localhost.herokuapp.com/:8081
+        url: http://localhost.herokuapp.com:8081/
         stripPrefix: false
         sensitiveHeaders:    
     jwt-session:
       path: /token-session/*
-      url:  http://localhost.herokuapp.com/:8082  
+      url:  http://localhost.herokuapp.com:8082/  
       stripPrefix: false
