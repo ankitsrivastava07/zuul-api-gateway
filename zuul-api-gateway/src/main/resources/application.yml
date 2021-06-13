@@ -7,7 +7,7 @@ spring:
     gateway:
       routes:
        - id: users
-         uri: http://microservice-users.herokuapp.com/           
+         uri: http://microservice-users.herokuapp.com/
          predicates:
           - Path= /users/*
        - id: jwt-session
