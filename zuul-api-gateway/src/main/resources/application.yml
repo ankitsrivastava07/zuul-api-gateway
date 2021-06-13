@@ -1,37 +1,24 @@
-spring:
-  application:
-    name: api-gateway
-    
 server:
   port: 8765
+
+
+spring:
+  cloud:
+    gateway:
+      routes:
+       - id: users
+         uri: http://localhost:8081/           
+         predicates:
+          - Path= /users/*
+       - id: jwt-session
+         uri: http://localhost:8082/
+         predicates:
+           - Path= /token-session/* 
 
 logging:
   level:
     org:
-      springframework:
-        cloud:
-          netflix: trace
-        
-hystrix:
-  command:
-    default:
-      execution:
-        timeout:
-          enabled: false
-
-zuul:
-  debugFilters: true
-  host:
-    socket-timeout-millis: 500000
-    connection-request-timeout-millis: 500000
-  include-debug-header: true
-  routes:
-    login:
-        path: /users/*
-        url: http://localhost.herokuapp.com:8081/
-        stripPrefix: false
-        sensitiveHeaders:    
-    jwt-session:
-      path: /token-session/*
-      url:  http://localhost.herokuapp.com:8082/  
-      stripPrefix: false
+     springframework:
+          cloud: 
+           gateway: DEBUG
+                   

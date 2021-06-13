@@ -1,5 +1,4 @@
-package zuulapigateway.fallback;
-
+package gateway.error;
 
 import lombok.Getter;
 import lombok.Setter;
