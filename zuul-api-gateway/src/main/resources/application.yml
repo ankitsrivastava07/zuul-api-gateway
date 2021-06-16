@@ -1,25 +1,28 @@
 server:
   port: 8765
-
-spring.application.name: spring-cloud-gateway
- 
-spring:
-  cloud:
-    gateway:
-      routes:
-       - id: users
-         uri: http://cloud-gateway-spring.herokuapp.com/
-         predicates:
-          - Path= /users/*
-       - id: jwt-session
-         uri: http://jwt-session-microservice.herokuapp.com/
-         predicates:
-           - Path= /token-session/* 
+  
 
 logging:
   level:
     org:
-     springframework:
-          cloud: 
-           gateway: DEBUG
-                   
+      springframework:
+        cloud:
+          netflix: trace
+
+    
+spring:
+  application:
+   name: cloud-gateway-spring
+  cloud:
+    gateway:
+     routes:
+       - id: users
+         uri: http://microservice-users.herokuapp.com:8081
+         predicates:
+          - Path= /users/*
+       - id: jwt-session
+         uri: http://jwt-session-microservice.herokuapp.com:8082
+         predicates:
+           - Path= /token-session/*
+
+        
