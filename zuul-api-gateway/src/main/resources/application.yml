@@ -17,11 +17,11 @@ spring:
     gateway:
      routes:
        - id: users
-         uri: http://microservice-users.herokuapp.com:8081
+         uri: http://microservice-users.herokuapp.com
          predicates:
           - Path= /users/*
        - id: jwt-session
-         uri: http://jwt-session-microservice.herokuapp.com:8082
+         uri: http://jwt-session-microservice.herokuapp.com
          predicates:
            - Path= /token-session/*
 
