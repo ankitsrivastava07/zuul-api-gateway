@@ -1,15 +1,13 @@
 server:
   port: 8765
-  
 
 logging:
   level:
     org:
       springframework:
         cloud:
-          netflix: trace
+          gateway: DEBUG
 
-    
 spring:
   application:
    name: cloud-gateway-spring
@@ -24,5 +22,3 @@ spring:
          uri: http://jwt-session-microservice.herokuapp.com
          predicates:
            - Path= /token-session/*
-
-        
