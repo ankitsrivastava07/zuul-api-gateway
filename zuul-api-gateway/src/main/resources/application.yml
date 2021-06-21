@@ -18,7 +18,19 @@ spring:
          uri: http://microservice-users.herokuapp.com
          predicates:
           - Path= /users/*
+         filters:
+          - name: CircuitBreaker
+            args:
+             name: users
+             fallbackuri: forward:/users-fallback-uri
        - id: jwt-session
          uri: http://jwt-session-microservice.herokuapp.com
          predicates:
            - Path= /token-session/*
+         filters:
+          - name: CircuitBreaker
+            args:
+             name: jwt-session
+             fallbackuri: forward:/jwt-session-fallback-uri
+     httpclient:
+        connect-timeout: 1600000000
