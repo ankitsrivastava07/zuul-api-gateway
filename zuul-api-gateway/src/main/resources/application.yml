@@ -32,11 +32,19 @@ spring:
          predicates:
           - Path= /users/*
          filters:
-          - name: CircuitBreaker
+          - name: Hystrix
             args:
              name: usersCircuitBreaker
              fallbackUri: forward:/users-fallback-uri
        - id: jwt-session
-         uri: http://jwt-session-microservice.herokuapp.com
+         uri:  http://jwt-session-microservice.herokuapp.com
          predicates:
            - Path= /token-session/*
+         filters:
+          - name: Hystrix
+            args:
+             name: jwtCircuitBreaker
+             fallbackUri: forward:/jwt-session-fallback-uri
+             
+             
+             
