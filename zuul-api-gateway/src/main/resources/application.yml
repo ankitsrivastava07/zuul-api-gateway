@@ -30,7 +30,7 @@ spring:
        - id: users
          uri: http://microservice-users.herokuapp.com
          predicates:
-          - Path= /users/*
+          - Path= /users/** , /users/userName/*
          filters:
           - name: Hystrix
             args:
