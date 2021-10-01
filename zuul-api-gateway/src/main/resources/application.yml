@@ -37,7 +37,7 @@ spring:
              name: usersCircuitBreaker
              fallbackUri: forward:/users-fallback-uri
        - id: jwt-session
-         uri:  http://ec2-13-232-254-45.ap-south-1.compute.amazonaws.com:8082/
+         uri:  http://ec2-13-234-77-231.ap-south-1.compute.amazonaws.com:8082/
          predicates:
            - Path= /token-session/*
          filters:
