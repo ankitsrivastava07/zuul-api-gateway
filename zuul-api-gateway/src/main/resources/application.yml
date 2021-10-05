@@ -15,36 +15,45 @@ hystrix:
         timeout:
           enabled: false
 
-    fallbackcmd:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 1600000000
-
 spring:
   application:
-   name: cloud-gateway-spring
+    name: cloud-gateway-spring
   cloud:
     gateway:
-     routes:
-       - id: users
-         uri: http://microservice-users.herokuapp.com
-         predicates:
+      routes:
+      - id: users
+        uri: http://microservice-users.herokuapp.com
+        predicates:
           - Path= /users/** , /users/userName/*
-         filters:
+        filters:
           - name: Hystrix
             args:
              name: usersCircuitBreaker
-             fallbackUri: forward:/users-fallback-uri
-       - id: jwt-session
-         uri:  http://ec2-13-234-77-231.ap-south-1.compute.amazonaws.com:8082/
-         predicates:
+             fallbackUri: forward:/users-fallback
+        metadata:
+          response-timeout: 6000
+          connect-timeout: 10000
+      - id: jwt-session
+        uri:  http://localhost:8082/
+        predicates:
            - Path= /token-session/*
-         filters:
+        filters:
           - name: Hystrix
             args:
              name: jwtCircuitBreaker
-             fallbackUri: forward:/jwt-session-fallback-uri
-             
-             
-             
+             fallbackUri: forward:/jwt-session-fallback
+        metadata:
+          response-timeout: 8000
+          connect-timeout: 10000
+      - id: order-microservice
+        uri: http://localhost:8083
+        predicates:
+           - Path= /orders/*
+        filters:
+           - name: Hystrix
+             args:
+              name: orderMicroserviceFallback
+              fallbackUri: forward:/order-microservice-fallback
+        metadata:
+          response-timeout: 6000
+          connect-timeout: 10000
