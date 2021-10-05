@@ -3,8 +3,10 @@ package gateway.fallback;
 import org.springframework.http.HttpStatus;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 @Data
+@Component
 public class ResponseConstant {
 
 	private Integer httpStatus = HttpStatus.SERVICE_UNAVAILABLE.value();
