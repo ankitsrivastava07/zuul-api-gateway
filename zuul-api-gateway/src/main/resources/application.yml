@@ -34,7 +34,7 @@ spring:
           read-timeout: 20000
           connect-timeout: 4000
       - id: jwt-session
-        uri:  http://ec2-3-109-202-243.ap-south-1.compute.amazonaws.com:8082/
+        uri:  http://ec2-65-0-204-135.ap-south-1.compute.amazonaws.com:8082/
         predicates:
            - Path= /token-session/*
         filters:
