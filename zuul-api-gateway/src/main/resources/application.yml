@@ -32,7 +32,7 @@ spring:
              fallbackUri: forward:/users-fallback
         metadata:
           read-timeout: 12000
-          connect-timeout: 6000
+          connect-timeout: 12000
       - id: jwt-session
         uri: https://jwt-session-microservice.herokuapp.com/
         predicates:
@@ -44,9 +44,9 @@ spring:
              fallbackUri: forward:/jwt-session-fallback
         metadata:
           read-timeout: 12000
-          connect-timeout: 6000
+          connect-timeout: 12000
       - id: order-microservice
-        uri: http://localhost:808
+        uri: http://localhost:8084
         predicates:
            - Path= /orders/*
         filters:
@@ -56,4 +56,4 @@ spring:
               fallbackUri: forward:/order-microservice-fallback
         metadata:
           read-timeout: 12000
-          connect-timeout: 4000
+          connect-timeout: 8000
