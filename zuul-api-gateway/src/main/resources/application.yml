@@ -22,7 +22,7 @@ spring:
     gateway:
       routes:
       - id: users
-        uri: http://localhost:8081
+        uri: http://microservice-users.herokuapp.com/users/register
         predicates:
           - Path= /users/** , /users/userName/*,/users/profile,/users/profile/**
         filters:
