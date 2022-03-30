@@ -22,7 +22,7 @@ spring:
     gateway:
       routes:
       - id: users
-        uri: http://microservice-users.herokuapp.com
+        uri: http://localhost:8081
         predicates:
           - Path= /users/** , /users/userName/*,/users/profile,/users/profile/**
         filters:
@@ -31,10 +31,10 @@ spring:
              name: usersCircuitBreaker
              fallbackUri: forward:/users-fallback
         metadata:
-          read-timeout: 12000
+          read-timeout: 120000
           connect-timeout: 12000
       - id: jwt-session
-        uri: https://jwt-session-microservice.herokuapp.com/
+        uri: http://jwt-session-microservice.herokuapp.com/
         predicates:
            - Path= /token-session/*
         filters:
