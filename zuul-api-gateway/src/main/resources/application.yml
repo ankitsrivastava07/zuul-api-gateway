@@ -21,10 +21,10 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: users
-        uri: http://microservice-users.herokuapp.com/users/register
+      - id: users,book
+        uri: http://localhost:8081/microservice-users.herokuapp.com/
         predicates:
-          - Path= /users/** , /users/userName/*,/users/profile,/users/profile/**
+          - Path= /book/** ,/users/** , /users/userName/*,/users/profile,/users/profile/**
         filters:
           - name: Hystrix
             args:
